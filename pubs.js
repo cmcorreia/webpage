@@ -212,7 +212,7 @@
     html += '<span class="pub-title">' + title + '</span>';
     if (venue) html += '. <span class="pub-venue">' + venue + '</span>';
     if (details) html += ', ' + details;
-    html += ' <span class="pub-year">(' + month + year + ')</span>';
+    html += ' <span class="pub-year-inline">(' + month + year + ')</span>';
     html += ' <span class="pub-type">' + type + '</span>';
     if (links) html += '<div class="pub-links">' + links + '</div>';
     html += '</li>';

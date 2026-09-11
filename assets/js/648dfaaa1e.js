@@ -1,1 +1,0 @@
-window.oldjQuery=window.jQuery;window.jQuery=window.oneJQuery;
