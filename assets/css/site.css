@@ -209,6 +209,11 @@ section:first-of-type{margin-top:0}
 .num-list .who{color:var(--text); font-weight:600}
 .num-list .what{font-style:italic}
 .num-list .when{color:var(--text-faint); font-size:13px}
+.thesis-link{
+  font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.03em; margin-left:6px;
+  color:var(--text-dim); border:1px solid var(--hairline); border-radius:4px; padding:1px 6px; white-space:nowrap;
+}
+.thesis-link:hover{color:var(--accent); border-color:var(--accent-dim); text-decoration:none}
 .subgroup-label{
   font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.05em; text-transform:uppercase;
   color:var(--text-faint); margin:28px 0 12px;
