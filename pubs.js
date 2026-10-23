@@ -141,13 +141,20 @@
     var parts = raw.split(/\s+and\s+/i);
     if (parts.length === 1) {
       var commaCount = (raw.match(/,/g) || []).length;
-      if (commaCount >= 2) {
+      if (raw.indexOf(';') !== -1) {
+        parts = raw.split(';');
+      } else if (commaCount >= 2) {
         parts = raw.split(',');
       }
     }
     var names = parts.map(function (p) { return cleanLatex(p.trim()); }).filter(Boolean);
-    var joined = names.join('; ');
-    return joined.replace(/Correia/g, '<strong>Correia</strong>');
+    return names.map(function (n) {
+      // Bold only Carlos M. Correia, not other Correias (e.g. "Correia, Jean-Jacques").
+      var m = n.match(/^(.*?)\s*Correia(?:,\s*(.*))?$/);
+      if (!m) return n;
+      var given = (m[2] || m[1] || '').trim();
+      return !given || /^C/i.test(given) ? n.replace('Correia', '<strong>Correia</strong>') : n;
+    }).join('; ');
   }
 
   // ---- Venue / links --------------------------------------------
