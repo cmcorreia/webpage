@@ -188,8 +188,40 @@
 
   // ---- Rendering --------------------------------------------
 
+  function escapeHtml(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   function escapeAttr(str) {
     return String(str).replace(/"/g, '&quot;');
+  }
+
+  // Lower-case, accent-free form of a name, for author matching.
+  function foldName(str) {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+  }
+
+  // Deep-link filter: ?author=Surname,I[;Surname,I...] keeps only entries with a matching co-author.
+  function parseAuthorParam(value) {
+    return value.split(';').map(function (spec) {
+      var parts = foldName(spec).split(',');
+      var surname = parts[0].replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      var initial = (parts[1] || '').trim().charAt(0);
+      if (!surname) return null;
+      var init = initial ? initial.replace(/[^a-z]/g, '') : '';
+      return [
+        new RegExp('^' + surname + (init ? ',\\s*' + init : '(,|$)')),
+        init ? new RegExp('^' + init + '[^\\s,]*\\s+(?:[^\\s,]+\\s+)*' + surname + '$') : new RegExp('\\s' + surname + '$')
+      ];
+    }).filter(Boolean);
+  }
+
+  function authorMatches(li, patterns) {
+    if (!patterns) return true;
+    var names = li.getAttribute('data-authors').split('|');
+    return patterns.some(function (pair) {
+      return names.some(function (n) { return pair[0].test(n) || pair[1].test(n); });
+    });
   }
 
   function renderEntry(entry, num) {
@@ -205,8 +237,11 @@
 
     var searchText = (cleanLatex(f.author) + ' ' + title + ' ' + venue).toLowerCase();
 
+    var authorList = cleanLatex(f.author || '').split(/\s+and\s+/).map(foldName).join('|');
+
     var html = '<li class="pub-entry" data-year="' + escapeAttr(year) + '" data-type="' +
-      escapeAttr(type) + '" data-search="' + escapeAttr(searchText) + '">';
+      escapeAttr(type) + '" data-search="' + escapeAttr(searchText) +
+      '" data-authors="' + escapeAttr(authorList) + '">';
     html += '<span class="pub-num">' + num + '.</span> ';
     html += '<span class="pub-authors">' + authors + '</span>. ';
     html += '<span class="pub-title">' + title + '</span>';
@@ -238,7 +273,7 @@
     return html;
   }
 
-  function updateFacetCounts(root, search, year, type) {
+  function updateFacetCounts(root, search, year, type, authorPatterns) {
     var entries = root.querySelectorAll('.pub-entry');
     var typeCounts = {}, allTypesCount = 0;
     var yearCounts = {}, allYearsCount = 0;
@@ -248,6 +283,7 @@
       var t = li.getAttribute('data-type');
       var s = li.getAttribute('data-search');
       if (search && s.indexOf(search) === -1) return;
+      if (!authorMatches(li, authorPatterns)) return;
 
       if (!year || y === year) {
         typeCounts[t] = (typeCounts[t] || 0) + 1;
@@ -281,7 +317,8 @@
       var matches =
         (!year || li.getAttribute('data-year') === year) &&
         (!type || li.getAttribute('data-type') === type) &&
-        (!search || li.getAttribute('data-search').indexOf(search) !== -1);
+        (!search || li.getAttribute('data-search').indexOf(search) !== -1) &&
+        authorMatches(li, root._authorPatterns);
       li.hidden = !matches;
       if (matches) visible++;
     });
@@ -305,7 +342,7 @@
     }
     count.textContent = visible + (visible === 1 ? ' publication' : ' publications');
 
-    updateFacetCounts(root, search, year, type);
+    updateFacetCounts(root, search, year, type, root._authorPatterns);
   }
 
   function render(container, entries) {
@@ -339,6 +376,19 @@
     listHtml += '</div>';
 
     container.innerHTML = renderFilterBar(order, Object.keys(typesPresent).sort()) + listHtml;
+
+    var params = new URLSearchParams(window.location.search);
+    var authorParam = params.get('author');
+    if (authorParam) {
+      container._authorPatterns = parseAuthorParam(authorParam);
+      container.querySelector('.pubs-filter-type').value = '';
+      var label = params.get('label') || authorParam.split(';')[0].split(',')[0];
+      var banner = document.createElement('p');
+      banner.className = 'pubs-author-banner';
+      banner.innerHTML = 'Papers co-authored with <strong>' + escapeHtml(label) + '</strong> &middot; ' +
+        '<a href="publications.html">show all publications</a>';
+      container.insertBefore(banner, container.firstChild);
+    }
 
     var updateNow = function () { applyFilters(container); };
     container.querySelector('.pubs-filter-search').addEventListener('input', updateNow);
