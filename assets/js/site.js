@@ -13,6 +13,19 @@
     { key: 'work', href: 'work-with-me.html', label: 'Work with me' }
   ];
 
+  // Visit counter: GoatCounter is cookieless and privacy-friendly. Set the site code
+  // (the part before .goatcounter.com) to switch it on; leave empty to disable.
+  var GOATCOUNTER_CODE = '';
+
+  function loadCounter() {
+    if (!GOATCOUNTER_CODE) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://gc.zgo.at/count.js';
+    s.setAttribute('data-goatcounter', 'https://' + GOATCOUNTER_CODE + '.goatcounter.com/count');
+    document.head.appendChild(s);
+  }
+
   function renderNav(current) {
     var links = PAGES.map(function (p) {
       var cls = p.key === current ? ' class="current"' : '';
@@ -45,6 +58,8 @@
       footEl.outerHTML = '<footer class="site-footer">' + renderFooter() + '</footer>';
     }
   }
+
+  loadCounter();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
