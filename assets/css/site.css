@@ -251,3 +251,15 @@ section:first-of-type{margin-top:0}
   margin:0 0 14px; font-size:14.5px; color:var(--text-dim);
 }
 .pubs-author-banner strong{color:var(--text)}
+
+.rd-card.has-fig{
+  display:grid; grid-template-columns:260px 1fr; gap:28px; align-items:start;
+}
+.rd-fig{
+  width:100%; height:auto; display:block;
+  border:1px solid var(--hairline); border-radius:8px;
+}
+.rd-body > :last-child{margin-bottom:0}
+@media (max-width:640px){
+  .rd-card.has-fig{grid-template-columns:1fr; gap:16px}
+}

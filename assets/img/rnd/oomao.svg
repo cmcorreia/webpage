@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img">
+<defs><marker id="a" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#e8a33d"/></marker></defs>
+<rect width="320" height="200" fill="#131820"/>
+<rect x="20" y="52" width="48" height="40" rx="6" fill="#1a212c" stroke="#3a4a63" stroke-width="1.2"/>
+<text x="44" y="77" text-anchor="middle" fill="#f3c878" font-family="ui-monospace,Menlo,monospace" font-size="12">src</text>
+<path d="M69,72 L79,72" stroke="#e8a33d" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="80" y="52" width="48" height="40" rx="6" fill="#1a212c" stroke="#3a4a63" stroke-width="1.2"/>
+<text x="104" y="77" text-anchor="middle" fill="#f3c878" font-family="ui-monospace,Menlo,monospace" font-size="12">atm</text>
+<path d="M129,72 L139,72" stroke="#e8a33d" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="140" y="52" width="48" height="40" rx="6" fill="#1a212c" stroke="#e8a33d" stroke-width="1.2"/>
+<text x="164" y="77" text-anchor="middle" fill="#f3c878" font-family="ui-monospace,Menlo,monospace" font-size="12">tel</text>
+<path d="M189,72 L199,72" stroke="#e8a33d" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="200" y="52" width="48" height="40" rx="6" fill="#1a212c" stroke="#3a4a63" stroke-width="1.2"/>
+<text x="224" y="77" text-anchor="middle" fill="#f3c878" font-family="ui-monospace,Menlo,monospace" font-size="12">wfs</text>
+<path d="M249,72 L259,72" stroke="#e8a33d" stroke-width="1.2" marker-end="url(#a)"/>
+<rect x="260" y="52" width="48" height="40" rx="6" fill="#1a212c" stroke="#e8a33d" stroke-width="1.2"/>
+<text x="284" y="77" text-anchor="middle" fill="#f3c878" font-family="ui-monospace,Menlo,monospace" font-size="12">dm</text>
+<rect x="20" y="118" width="280" height="56" rx="6" fill="#0a0d13" stroke="#3a4a63"/>
+<text x="32" y="140" fill="#8b95a8" font-family="ui-monospace,Menlo,monospace" font-size="11">src = source*atm*tel;</text>
+<text x="32" y="160" fill="#e8a33d" font-family="ui-monospace,Menlo,monospace" font-size="11">src = src*dm*wfs;</text>
+<text x="20" y="30" fill="#8b95a8" font-family="ui-monospace,Menlo,monospace" font-size="10">OOMAO · Matlab AO objects</text>
+</svg>
