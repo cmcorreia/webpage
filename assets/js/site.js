@@ -15,7 +15,7 @@
 
   // Visit counter: GoatCounter is cookieless and privacy-friendly. Set the site code
   // (the part before .goatcounter.com) to switch it on; leave empty to disable.
-  var GOATCOUNTER_CODE = '';
+  var GOATCOUNTER_CODE = 'ccorreia';
 
   function loadCounter() {
     if (!GOATCOUNTER_CODE) return;
