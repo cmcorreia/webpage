@@ -149,6 +149,7 @@
     }
     var names = parts.map(function (p) { return cleanLatex(p.trim()); }).filter(Boolean);
     return names.map(function (n) {
+      if (n === 'others') return 'et al.';
       // Bold only Carlos M. Correia, not other Correias (e.g. "Correia, Jean-Jacques").
       var m = n.match(/^(.*?)\s*Correia(?:,\s*(.*))?$/);
       if (!m) return n;
