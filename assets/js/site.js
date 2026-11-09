@@ -61,6 +61,20 @@
 
   loadCounter();
 
+  // Video thumbnails link to the video page; with JS they play in place (loaded only on click).
+  document.addEventListener('click', function (ev) {
+    var thumb = ev.target.closest && ev.target.closest('.video-thumb[data-embed]');
+    if (!thumb || ev.metaKey || ev.ctrlKey || ev.shiftKey) return;
+    ev.preventDefault();
+    var frame = document.createElement('iframe');
+    frame.src = 'https://www.dailymotion.com/embed/video/' + thumb.getAttribute('data-embed') + '?autoplay=1';
+    frame.setAttribute('allow', 'autoplay; fullscreen');
+    frame.setAttribute('allowfullscreen', '');
+    frame.title = thumb.getAttribute('aria-label') || 'Video';
+    thumb.innerHTML = '';
+    thumb.appendChild(frame);
+  });
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
