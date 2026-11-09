@@ -3,12 +3,13 @@
 <rect width="320" height="200" fill="#131820"/>
 <polygon points="18,55 138,100 18,145" fill="#e8a33d" fill-opacity=".10" stroke="#e8a33d" stroke-width="1"/>
 <line x1="18" y1="100" x2="138" y2="100" stroke="#3a4a63" stroke-dasharray="3 3"/>
-<polygon points="128,70 160,100 128,130" fill="#1a212c" stroke="#f3c878" stroke-width="1.5"/>
-<line x1="128" y1="100" x2="160" y2="100" stroke="#3a4a63" stroke-width=".8"/>
-<line x1="144" y1="85" x2="144" y2="115" stroke="#3a4a63" stroke-width=".8"/><line x1="160" y1="100" x2="255" y2="68" stroke="#e8a33d" stroke-opacity=".5"/>
-<line x1="160" y1="100" x2="290" y2="68" stroke="#e8a33d" stroke-opacity=".5"/>
-<line x1="160" y1="100" x2="255" y2="132" stroke="#e8a33d" stroke-opacity=".5"/>
-<line x1="160" y1="100" x2="290" y2="132" stroke="#e8a33d" stroke-opacity=".5"/>
+<polygon points="138,100 172,68 172,132" fill="#1a212c" stroke="#f3c878" stroke-width="1.5" stroke-linejoin="round"/>
+<line x1="138" y1="100" x2="172" y2="100" stroke="#3a4a63" stroke-width=".8"/>
+<line x1="155" y1="84" x2="155" y2="116" stroke="#3a4a63" stroke-width=".8"/>
+<line x1="172" y1="100" x2="255" y2="68" stroke="#e8a33d" stroke-opacity=".5"/>
+<line x1="172" y1="100" x2="290" y2="68" stroke="#e8a33d" stroke-opacity=".5"/>
+<line x1="172" y1="100" x2="255" y2="132" stroke="#e8a33d" stroke-opacity=".5"/>
+<line x1="172" y1="100" x2="290" y2="132" stroke="#e8a33d" stroke-opacity=".5"/>
 <circle cx="255" cy="68" r="17" fill="#131820"/>
 <circle cx="290" cy="68" r="17" fill="#131820"/>
 <circle cx="255" cy="132" r="17" fill="#131820"/>
