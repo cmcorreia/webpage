@@ -42,7 +42,7 @@
   function renderFooter() {
     return (
       '<div class="site-footer-inner">' +
-      '<span>Porto, Portugal &middot; <a href="mailto:ccorreia_at_pm.me">ccorreia_at_pm.me</a></span>' +
+      '<span>Porto, Portugal &middot; <a href="mailto:carlos.correia@fe.up.pt?subject=Contact%20from%20personal%20website">carlos.correia@fe.up.pt</a></span>' +
       '<span class="mono">&copy; Carlos M. Correia</span>' +
       '</div>'
     );
