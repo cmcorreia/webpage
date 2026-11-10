@@ -3,8 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Research topics: wavefront sensing, PSF reconstruction, tomography, and modelling software led by Carlos M. Correia.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=20261114">
-<script src="assets/js/site.js?v=20261114" defer></script>
+<link rel="stylesheet" href="assets/css/site.css?v=20261115">
+<script src="assets/js/site.js?v=20261115" defer></script>
 
 <div id="site-nav" data-current="rnd"></div>
 
@@ -63,6 +63,21 @@
         </div>
       </div>
 
+      <div class="rd-card has-fig" id="control">
+        <img class="rd-fig" src="assets/img/rnd/control.svg" alt="Feedback loop with a controller and the residual power spectrum with a vibration peak suppressed" loading="lazy" width="320" height="200">
+        <div class="rd-body">
+          <h3>Advanced AO control</h3>
+          <p>Optimal control squeezes the last nanometres out of an AO loop: it models the turbulence, the vibrations and the dynamics of the mirrors, and uses them to predict and correct. We work on:</p>
+          <ul>
+            <li>Minimum-variance and LQG control, including deformable mirrors with their own dynamics and woofer&ndash;tweeter systems</li>
+            <li>Vibration identification and suppression for ELT-class systems and the VLTI</li>
+            <li>Wavefront control strategies for ELT instruments, such as stable DM fitting without modal truncation</li>
+            <li>Learning-based control, including reinforcement learning for extreme AO</li>
+          </ul>
+          <p class="proj-actions"><a class="proj-act proj-pubs" data-topic="control" href="publications.html?topic=control&amp;label=Advanced%20AO%20control"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Publications</span></a></p>
+        </div>
+      </div>
+
       <div class="rd-card has-fig" id="oomao">
         <img class="rd-fig" src="assets/img/rnd/oomao.svg" alt="Chain of OOMAO objects: source, atmosphere, telescope, wavefront sensor and deformable mirror" loading="lazy" width="320" height="200">
         <div class="rd-body">
@@ -100,6 +115,49 @@
         </div>
       </div>
 
+      <div class="rd-card has-fig" id="hci">
+        <img class="rd-fig" src="assets/img/rnd/hci.svg" alt="A star with its halo, a coronagraphic dark hole and a faint planet inside it" loading="lazy" width="320" height="200">
+        <div class="rd-body">
+          <h3>High-contrast imaging, extreme AO &amp; exoplanets</h3>
+          <p>Seeing a planet next to its star needs a very deep correction and a clean control of the residual halo. We contribute to the adaptive optics, the instrument concepts and the data analysis for:</p>
+          <ul>
+            <li>Extreme AO and coronagraphy for the ELT Planetary Camera and Spectrograph (PCS)</li>
+            <li>The wind-driven halo and the low-wind effect in SPHERE and GRAVITY+</li>
+            <li>High-contrast imaging concepts and post-processing, from NFIRAOS/IRIS to speckle suppression</li>
+            <li>Exoplanet detection with radial-velocity spectrographs and with VLTI/GRAVITY+</li>
+          </ul>
+          <p class="proj-actions"><a class="proj-act proj-pubs" data-topic="hci" href="publications.html?topic=hci&amp;label=High-contrast%20imaging%2C%20XAO%20and%20exoplanets"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Publications</span></a></p>
+        </div>
+      </div>
+
+      <div class="rd-card has-fig" id="rtc-telemetry">
+        <img class="rd-fig" src="assets/img/rnd/rtc.svg" alt="A real-time computer between wavefront sensor and deformable mirror, streaming telemetry to a dashboard" loading="lazy" width="320" height="200">
+        <div class="rd-body">
+          <h3>Real-time computing &amp; AO telemetry</h3>
+          <p>An ELT-scale AO system has to compute thousands of actuator commands within a millisecond, and produces a flood of data that is valuable well beyond the loop itself. We work on:</p>
+          <ul>
+            <li>Real-time computer design and performance modelling for ELT-scale AO, including GPU-based pipelines for METIS and the Keck RTC upgrade</li>
+            <li>A standard format for AO telemetry, to exchange and reuse data across observatories</li>
+            <li>Virtual access to telemetry and advanced visualisation tools</li>
+          </ul>
+          <p class="proj-actions"><a class="proj-act proj-pubs" data-topic="rtc-telemetry" href="publications.html?topic=rtc-telemetry&amp;label=Real-time%20computing%20and%20AO%20telemetry"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Publications</span></a></p>
+        </div>
+      </div>
+
+      <div class="rd-card has-fig" id="space-ml">
+        <img class="rd-fig" src="assets/img/rnd/spaceml.svg" alt="A deployable CubeSat telescope in orbit next to a neural network" loading="lazy" width="320" height="200">
+        <div class="rd-body">
+          <h3>Space optics &amp; machine learning</h3>
+          <p>The tools of adaptive optics carry over to space, and machine learning is starting to replace hand-made models where they fall short. We work on:</p>
+          <ul>
+            <li>Deployable CubeSat telescopes for Earth observation and astronomy, and their phasing and error budgets</li>
+            <li>Space situational awareness with event-based (neuromorphic) sensors &mdash; see <a href="projects.html#neurospaceaware">NEUROSPACEAWARE</a></li>
+            <li>Deep learning for phasing segmented telescopes and for wavefront sensing</li>
+            <li>Reinforcement learning for the control of extreme AO systems</li>
+          </ul>
+          <p class="proj-actions"><a class="proj-act proj-pubs" data-topic="space-ml" href="publications.html?topic=space-ml&amp;label=Space%20optics%20and%20machine%20learning"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Publications</span></a></p>
+        </div>
+      </div>
     </div>
   </section>
 
