@@ -42,10 +42,20 @@
   function renderFooter() {
     return (
       '<div class="site-footer-inner">' +
-      '<span>Porto, Portugal &middot; <a href="mailto:carlos.correia@fe.up.pt?subject=Contact%20from%20personal%20website">carlos.correia@fe.up.pt</a></span>' +
+      '<span>Porto, Portugal &middot; <a class="obf-mail" data-subject="Contact from personal website" href="#">carlos.correia [at] fe.up.pt</a></span>' +
       '<span class="mono">&copy; Carlos M. Correia</span>' +
       '</div>'
     );
+  }
+
+  // The contact address is assembled here so it never appears as plain text in the page source.
+  function fillMailLinks() {
+    var addr = ['carlos.correia', 'fe.up.pt'].join(String.fromCharCode(64));
+    document.querySelectorAll('a.obf-mail').forEach(function (a) {
+      var subject = a.getAttribute('data-subject');
+      a.href = 'mailto:' + addr + (subject ? '?subject=' + encodeURIComponent(subject) : '');
+      if (!a.hasAttribute('data-keep-text')) a.textContent = addr;
+    });
   }
 
   function init() {
@@ -57,6 +67,7 @@
     if (footEl) {
       footEl.outerHTML = '<footer class="site-footer">' + renderFooter() + '</footer>';
     }
+    fillMailLinks();
   }
 
   loadCounter();
