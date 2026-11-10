@@ -224,8 +224,12 @@
     }).filter(Boolean);
   }
 
-  function projectMatches(li, project) {
-    return !project || li.getAttribute('data-projects').indexOf(',' + project + ',') !== -1;
+  // tags = { project: 'harmoni', topic: 'tomography' } -- either or both may be set.
+  function projectMatches(li, tags) {
+    if (!tags) return true;
+    return ['project', 'topic'].every(function (k) {
+      return !tags[k] || li.getAttribute('data-' + k + 's').indexOf(',' + tags[k] + ',') !== -1;
+    });
   }
 
   function authorMatches(li, patterns) {
@@ -254,7 +258,8 @@
     var html = '<li class="pub-entry" data-year="' + escapeAttr(year) + '" data-type="' +
       escapeAttr(type) + '" data-search="' + escapeAttr(searchText) +
       '" data-authors="' + escapeAttr(authorList) +
-      '" data-projects="' + escapeAttr(',' + (f.project || '').toLowerCase().replace(/\s+/g, '') + ',') + '">';
+      '" data-projects="' + escapeAttr(',' + (f.project || '').toLowerCase().replace(/\s+/g, '') + ',') +
+      '" data-topics="' + escapeAttr(',' + (f.topic || '').toLowerCase().replace(/\s+/g, '') + ',') + '">';
     html += '<span class="pub-num">' + num + '.</span> ';
     html += '<span class="pub-authors">' + authors + '</span>. ';
     html += '<span class="pub-title">' + title + '</span>';
@@ -332,7 +337,7 @@
         (!type || li.getAttribute('data-type') === type) &&
         (!search || li.getAttribute('data-search').indexOf(search) !== -1) &&
         authorMatches(li, root._authorPatterns) &&
-        projectMatches(li, root._project);
+        projectMatches(li, root._tags);
       li.hidden = !matches;
       if (matches) visible++;
     });
@@ -356,7 +361,7 @@
     }
     count.textContent = visible + (visible === 1 ? ' publication' : ' publications');
 
-    updateFacetCounts(root, search, year, type, root._authorPatterns, root._project);
+    updateFacetCounts(root, search, year, type, root._authorPatterns, root._tags);
   }
 
   function render(container, entries) {
@@ -405,19 +410,24 @@
     }
 
     var projectParam = params.get('project');
-    if (projectParam) {
-      container._project = projectParam.toLowerCase();
+    var topicParam = params.get('topic');
+    if (projectParam || topicParam) {
+      container._tags = {
+        project: projectParam ? projectParam.toLowerCase() : '',
+        topic: topicParam ? topicParam.toLowerCase() : ''
+      };
       container.querySelector('.pubs-filter-type').value = '';
-      var plabel = params.get('label') || projectParam;
+      var plabel = params.get('label') || projectParam || topicParam;
       var pbanner = document.createElement('p');
       pbanner.className = 'pubs-author-banner';
       var tally = { Journal: 0, Conference: 0, other: 0 };
       container.querySelectorAll('.pub-entry').forEach(function (li) {
-        if (!projectMatches(li, container._project)) return;
+        if (!projectMatches(li, container._tags)) return;
         var t = li.getAttribute('data-type');
         tally[t === 'Journal' || t === 'Conference' ? t : 'other']++;
       });
-      pbanner.innerHTML = 'Publications under project <strong>' + escapeHtml(plabel) + '</strong>: ' +
+      pbanner.innerHTML = 'Publications under ' + (projectParam ? 'project' : 'research topic') +
+        ' <strong>' + escapeHtml(plabel) + '</strong>: ' +
         tally.Journal + ' peer-reviewed, ' + tally.Conference + ' conference, ' + tally.other + ' other' +
         ' &middot; <a href="publications.html">show all publications</a>';
       container.insertBefore(pbanner, container.firstChild);

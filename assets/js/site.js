@@ -71,18 +71,21 @@
 
   loadCounter();
 
-  // Project cards: show how many papers are tagged with each project; hide the link if none.
+  // Project and research-topic cards: show how many papers carry each tag; hide the link if none.
   function fillProjectCounts() {
-    var links = document.querySelectorAll('a.proj-pubs[data-project]');
+    var links = document.querySelectorAll('a.proj-pubs[data-project], a.proj-pubs[data-topic]');
     if (!links.length) return;
     fetch('data/ccorreiaPublications.bib').then(function (r) { return r.text(); }).then(function (text) {
-      var counts = {};
+      var counts = { project: {}, topic: {} };
       text.split(/\n@/).forEach(function (entry) {
-        var m = entry.match(/\n\s*project\s*=\s*\{([^}]*)\}/);
-        if (m) m[1].split(',').forEach(function (p) { p = p.trim().toLowerCase(); if (p) counts[p] = (counts[p] || 0) + 1; });
+        ['project', 'topic'].forEach(function (kind) {
+          var m = entry.match(new RegExp('\\n\\s*' + kind + '\\s*=\\s*\\{([^}]*)\\}'));
+          if (m) m[1].split(',').forEach(function (p) { p = p.trim().toLowerCase(); if (p) counts[kind][p] = (counts[kind][p] || 0) + 1; });
+        });
       });
       links.forEach(function (a) {
-        var n = counts[a.getAttribute('data-project')] || 0;
+        var kind = a.hasAttribute('data-topic') ? 'topic' : 'project';
+        var n = counts[kind][a.getAttribute('data-' + kind)] || 0;
         if (!n) { a.hidden = true; return; }
         a.querySelector('span').textContent = 'Publications (' + n + ')';
       });
