@@ -315,3 +315,5 @@ section:first-of-type{margin-top:0}
 .proj-act:hover{color:var(--accent); border-color:var(--accent-dim); text-decoration:none}
 .proj-jobs{color:var(--accent); border-color:var(--accent-dim); background:var(--accent-soft)}
 .proj-pubs[hidden]{display:none}
+.position{scroll-margin-top:24px}
+.position:target{border-color:var(--accent); box-shadow:0 0 0 2px var(--accent-soft), 0 0 26px rgba(232,163,61,0.18)}
