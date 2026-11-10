@@ -301,3 +301,5 @@ section:first-of-type{margin-top:0}
 .proj-card:target{background:var(--accent-soft); box-shadow:-14px 0 0 var(--accent-soft), 14px 0 0 var(--accent-soft); border-radius:4px}
 .proj-link{color:var(--accent); border-color:var(--accent-dim)}
 .proj-link:hover{background:var(--accent-soft)}
+.rd-card{scroll-margin-top:24px}
+.rd-card:target{background:var(--accent-soft); box-shadow:-14px 0 0 var(--accent-soft), 14px 0 0 var(--accent-soft); border-radius:4px}
