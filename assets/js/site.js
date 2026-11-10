@@ -48,13 +48,12 @@
     );
   }
 
-  // The contact address is assembled here so it never appears as plain text in the page source.
+  // The mailto link is assembled here; the visible text stays obfuscated ("name [at] domain").
   function fillMailLinks() {
     var addr = ['carlos.correia', 'fe.up.pt'].join(String.fromCharCode(64));
     document.querySelectorAll('a.obf-mail').forEach(function (a) {
       var subject = a.getAttribute('data-subject');
       a.href = 'mailto:' + addr + (subject ? '?subject=' + encodeURIComponent(subject) : '');
-      if (!a.hasAttribute('data-keep-text')) a.textContent = addr;
     });
   }
 
