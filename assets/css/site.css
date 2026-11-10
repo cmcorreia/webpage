@@ -230,7 +230,20 @@ section:first-of-type{margin-top:0}
   letter-spacing:.05em; padding:3px 9px; border-radius:20px; margin-bottom:10px;
 }
 .position-badge.open{background:rgba(120,196,140,0.14); color:#78c48c}
-.position-badge.upcoming{background:var(--surface-2); color:var(--text-faint); border:1px solid var(--hairline)}
+/* upcoming = lit up, to draw the eye */
+.position-badge.upcoming{
+  position:relative; padding-left:22px;
+  background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent-dim);
+  box-shadow:0 0 14px rgba(232,163,61,0.28);
+}
+.position-badge.upcoming::before{
+  content:""; position:absolute; left:9px; top:50%; width:6px; height:6px; margin-top:-3px;
+  border-radius:50%; background:var(--accent); box-shadow:0 0 6px var(--accent);
+  animation:soon-pulse 1.8s ease-in-out infinite;
+}
+.position-soon{border-color:var(--accent-dim); box-shadow:0 0 0 1px var(--accent-soft), 0 0 22px rgba(232,163,61,0.10)}
+@keyframes soon-pulse{0%,100%{opacity:1} 50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.position-badge.upcoming::before{animation:none}}
 .position h3{font-family:"Fraunces", Georgia, serif; font-size:18px; margin:0 0 4px; color:var(--text)}
 .position .org{font-size:13.5px; color:var(--text-dim); font-style:italic; margin:0 0 12px}
 .position ul{margin:0 0 12px; padding-left:20px; font-size:14.5px; color:var(--text-dim)}
