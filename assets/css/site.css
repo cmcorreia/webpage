@@ -303,3 +303,15 @@ section:first-of-type{margin-top:0}
 .proj-link:hover{background:var(--accent-soft)}
 .rd-card{scroll-margin-top:24px}
 .rd-card:target{background:var(--accent-soft); box-shadow:-14px 0 0 var(--accent-soft), 14px 0 0 var(--accent-soft); border-radius:4px}
+
+/* ---- project action icons ---- */
+.proj-actions{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0 !important}
+.proj-act{
+  display:inline-flex; align-items:center; gap:7px; padding:5px 12px 5px 10px;
+  font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.02em;
+  color:var(--text-dim); background:var(--surface); border:1px solid var(--hairline); border-radius:20px;
+}
+.proj-act svg{width:15px; height:15px; flex:none}
+.proj-act:hover{color:var(--accent); border-color:var(--accent-dim); text-decoration:none}
+.proj-jobs{color:var(--accent); border-color:var(--accent-dim); background:var(--accent-soft)}
+.proj-pubs[hidden]{display:none}

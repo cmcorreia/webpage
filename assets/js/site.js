@@ -72,6 +72,25 @@
 
   loadCounter();
 
+  // Project cards: show how many papers are tagged with each project; hide the link if none.
+  function fillProjectCounts() {
+    var links = document.querySelectorAll('a.proj-pubs[data-project]');
+    if (!links.length) return;
+    fetch('data/ccorreiaPublications.bib').then(function (r) { return r.text(); }).then(function (text) {
+      var counts = {};
+      text.split(/\n@/).forEach(function (entry) {
+        var m = entry.match(/\n\s*project\s*=\s*\{([^}]*)\}/);
+        if (m) m[1].split(',').forEach(function (p) { p = p.trim().toLowerCase(); if (p) counts[p] = (counts[p] || 0) + 1; });
+      });
+      links.forEach(function (a) {
+        var n = counts[a.getAttribute('data-project')] || 0;
+        if (!n) { a.hidden = true; return; }
+        a.querySelector('span').textContent = 'Publications (' + n + ')';
+      });
+    }).catch(function () { /* keep plain links */ });
+  }
+  document.addEventListener('DOMContentLoaded', fillProjectCounts);
+
   // Video thumbnails link to the video page; with JS they play in place (loaded only on click).
   document.addEventListener('click', function (ev) {
     var thumb = ev.target.closest && ev.target.closest('.video-thumb[data-embed]');

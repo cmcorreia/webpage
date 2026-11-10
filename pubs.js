@@ -224,6 +224,10 @@
     }).filter(Boolean);
   }
 
+  function projectMatches(li, project) {
+    return !project || li.getAttribute('data-projects').indexOf(',' + project + ',') !== -1;
+  }
+
   function authorMatches(li, patterns) {
     if (!patterns) return true;
     var names = li.getAttribute('data-authors').split('|');
@@ -249,7 +253,8 @@
 
     var html = '<li class="pub-entry" data-year="' + escapeAttr(year) + '" data-type="' +
       escapeAttr(type) + '" data-search="' + escapeAttr(searchText) +
-      '" data-authors="' + escapeAttr(authorList) + '">';
+      '" data-authors="' + escapeAttr(authorList) +
+      '" data-projects="' + escapeAttr(',' + (f.project || '').toLowerCase().replace(/\s+/g, '') + ',') + '">';
     html += '<span class="pub-num">' + num + '.</span> ';
     html += '<span class="pub-authors">' + authors + '</span>. ';
     html += '<span class="pub-title">' + title + '</span>';
@@ -281,7 +286,7 @@
     return html;
   }
 
-  function updateFacetCounts(root, search, year, type, authorPatterns) {
+  function updateFacetCounts(root, search, year, type, authorPatterns, project) {
     var entries = root.querySelectorAll('.pub-entry');
     var typeCounts = {}, allTypesCount = 0;
     var yearCounts = {}, allYearsCount = 0;
@@ -291,7 +296,7 @@
       var t = li.getAttribute('data-type');
       var s = li.getAttribute('data-search');
       if (search && s.indexOf(search) === -1) return;
-      if (!authorMatches(li, authorPatterns)) return;
+      if (!authorMatches(li, authorPatterns) || !projectMatches(li, project)) return;
 
       if (!year || y === year) {
         typeCounts[t] = (typeCounts[t] || 0) + 1;
@@ -326,7 +331,8 @@
         (!year || li.getAttribute('data-year') === year) &&
         (!type || li.getAttribute('data-type') === type) &&
         (!search || li.getAttribute('data-search').indexOf(search) !== -1) &&
-        authorMatches(li, root._authorPatterns);
+        authorMatches(li, root._authorPatterns) &&
+        projectMatches(li, root._project);
       li.hidden = !matches;
       if (matches) visible++;
     });
@@ -350,7 +356,7 @@
     }
     count.textContent = visible + (visible === 1 ? ' publication' : ' publications');
 
-    updateFacetCounts(root, search, year, type, root._authorPatterns);
+    updateFacetCounts(root, search, year, type, root._authorPatterns, root._project);
   }
 
   function render(container, entries) {
@@ -396,6 +402,18 @@
       banner.innerHTML = 'Papers co-authored with <strong>' + escapeHtml(label) + '</strong> &middot; ' +
         '<a href="publications.html">show all publications</a>';
       container.insertBefore(banner, container.firstChild);
+    }
+
+    var projectParam = params.get('project');
+    if (projectParam) {
+      container._project = projectParam.toLowerCase();
+      container.querySelector('.pubs-filter-type').value = '';
+      var plabel = params.get('label') || projectParam;
+      var pbanner = document.createElement('p');
+      pbanner.className = 'pubs-author-banner';
+      pbanner.innerHTML = 'Publications under project <strong>' + escapeHtml(plabel) + '</strong> &middot; ' +
+        '<a href="publications.html">show all publications</a>';
+      container.insertBefore(pbanner, container.firstChild);
     }
 
     var updateNow = function () { applyFilters(container); };
