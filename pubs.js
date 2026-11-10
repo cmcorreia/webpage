@@ -411,8 +411,15 @@
       var plabel = params.get('label') || projectParam;
       var pbanner = document.createElement('p');
       pbanner.className = 'pubs-author-banner';
-      pbanner.innerHTML = 'Publications under project <strong>' + escapeHtml(plabel) + '</strong> &middot; ' +
-        '<a href="publications.html">show all publications</a>';
+      var tally = { Journal: 0, Conference: 0, other: 0 };
+      container.querySelectorAll('.pub-entry').forEach(function (li) {
+        if (!projectMatches(li, container._project)) return;
+        var t = li.getAttribute('data-type');
+        tally[t === 'Journal' || t === 'Conference' ? t : 'other']++;
+      });
+      pbanner.innerHTML = 'Publications under project <strong>' + escapeHtml(plabel) + '</strong>: ' +
+        tally.Journal + ' peer-reviewed, ' + tally.Conference + ' conference, ' + tally.other + ' other' +
+        ' &middot; <a href="publications.html">show all publications</a>';
       container.insertBefore(pbanner, container.firstChild);
     }
 
