@@ -349,3 +349,105 @@ section:first-of-type{margin-top:0}
   .timeline li.has-logo .t-body{padding-right:8px}
   .timeline .t-logo{display:none}
 }
+
+/* ---- dedicated project page (ciao-pcs.html) ---- */
+.hero{
+  position:relative; min-height:clamp(380px, 62vh, 560px); display:flex; align-items:flex-end;
+  background:#04060b; overflow:hidden; border-bottom:1px solid var(--hairline);
+}
+.hero img.hero-bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 35%}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(4,6,11,.15) 0%, rgba(4,6,11,.05) 35%, rgba(10,13,19,.85) 78%, var(--bg) 100%),
+             linear-gradient(90deg, rgba(4,6,11,.55) 0%, rgba(4,6,11,0) 60%);
+}
+.hero-inner{position:relative; z-index:1; width:100%; max-width:var(--max); margin:0 auto; padding:0 24px 34px}
+.hero .back-link a{color:var(--text-dim)}
+.hero .page-title{font-size:clamp(38px, 7vw, 58px); letter-spacing:-.01em; margin:4px 0 8px; text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.hero .page-dek{color:#c9d1de; font-size:16.5px; text-shadow:0 1px 12px rgba(0,0,0,.7)}
+.img-credit{
+  position:absolute; z-index:2; right:10px; bottom:8px; font-family:"IBM Plex Mono", monospace; font-size:10.5px;
+  color:rgba(231,235,241,.6); background:rgba(4,6,11,.45); padding:1px 6px; border-radius:3px;
+}
+.img-credit a{color:inherit}
+.back-link{font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.03em; margin:0 0 18px}
+
+.facts{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:1px;
+  margin:-1px 0 52px; padding:0; background:var(--hairline);
+  border:1px solid var(--hairline); border-radius:0 0 10px 10px; overflow:hidden;
+}
+.facts div{background:var(--surface); padding:14px 16px; min-width:0}
+.facts dt{font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--text-faint); margin:0 0 4px}
+.facts dd{margin:0; font-size:14.5px; color:var(--text); overflow-wrap:anywhere}
+.facts dd small{display:block; font-size:12.5px; color:var(--text-dim)}
+
+.project-page section{margin-bottom:56px}
+.prose p, .prose li{font-size:15.5px; color:var(--text-dim)}
+.prose p{margin:0 0 14px}
+.prose ul{margin:0 0 14px; padding-left:20px}
+.prose li{margin-bottom:6px}
+.prose strong{color:var(--text); font-weight:600}
+.prose li::marker{color:var(--accent)}
+
+figure.sky{margin:22px 0 0}
+figure.sky img, .plate img, .gallery img{display:block; width:100%; height:auto; border:1px solid var(--hairline); border-radius:10px; background:#04060b}
+figure figcaption{font-size:13px; color:var(--text-faint); margin-top:8px; line-height:1.5}
+figure figcaption .cr{font-family:"IBM Plex Mono", monospace; font-size:11px; color:var(--text-faint)}
+figure figcaption .cr a{color:var(--text-dim)}
+
+.plates{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:22px 0 0}
+.plate{margin:0; position:relative}
+.plate img{aspect-ratio:1/1; object-fit:cover}
+.plate .tag{
+  position:absolute; left:10px; top:10px; font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--accent); background:rgba(4,6,11,.7); border:1px solid var(--accent-dim); border-radius:3px; padding:1px 6px;
+}
+
+/* light path */
+.lightpath{list-style:none; margin:24px 0 8px; padding:0; display:grid; grid-template-columns:repeat(5, 1fr); gap:0; position:relative}
+.lightpath li{position:relative; padding:0 8px; text-align:center}
+.lightpath li:not(:last-child)::after{
+  content:""; position:absolute; top:21px; right:-6px; width:12px; height:12px;
+  border-top:1.5px solid var(--accent-dim); border-right:1.5px solid var(--accent-dim); transform:rotate(45deg);
+}
+.lightpath::before{content:""; position:absolute; left:10%; right:10%; top:27px; height:1px; background:linear-gradient(90deg, #ffe2a8, var(--accent-dim) 40%, #7ba7d9)}
+.lp-node{
+  position:relative; z-index:1; width:54px; height:54px; margin:0 auto 10px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; background:var(--surface-2); border:1px solid var(--hairline); color:var(--accent);
+}
+.lp-node svg{width:26px; height:26px}
+.lightpath li.key .lp-node{border-color:var(--accent); box-shadow:0 0 0 4px var(--accent-soft), 0 0 22px rgba(232,163,61,.25)}
+.lp-name{font-size:13.5px; font-weight:600; color:var(--text); line-height:1.3}
+.lp-desc{font-size:12.5px; color:var(--text-dim); line-height:1.4; margin-top:3px}
+.loop-note{font-family:"IBM Plex Mono", monospace; font-size:11.5px; color:var(--text-faint); text-align:center; margin:14px 0 0}
+.loop-note b{color:var(--accent); font-weight:500}
+@media (max-width:640px){
+  .lightpath{grid-template-columns:1fr; gap:14px}
+  .lightpath::before{left:26px; right:auto; top:10px; bottom:10px; width:1px; height:auto; background:linear-gradient(180deg, #ffe2a8, var(--accent-dim) 40%, #7ba7d9)}
+  .lightpath li{display:grid; grid-template-columns:54px 1fr; gap:14px; text-align:left; padding:0; align-items:center}
+  .lightpath li::after{display:none}
+  .lp-node{margin:0}
+  .plates{grid-template-columns:1fr}
+}
+
+.gallery{display:grid; grid-template-columns:2fr 1fr; gap:14px; margin:22px 0 0}
+.gallery figure{margin:0}
+.gallery .g-main{grid-row:span 2}
+.gallery .g-main img{height:100%; object-fit:cover; min-height:100%}
+.gallery .g-main{display:flex; flex-direction:column}
+.gallery .g-main img{flex:1}
+@media (max-width:640px){ .gallery{grid-template-columns:1fr} .gallery .g-main{grid-row:auto} }
+
+.people{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:12px}
+.person{background:var(--surface); border:1px solid var(--hairline); border-radius:10px; padding:14px 16px}
+.person .p-name{font-weight:600; color:var(--text); font-size:15px; margin:0}
+.person .p-role{font-size:13px; color:var(--text-dim); margin:2px 0 0}
+.person.pi{border-color:var(--accent-dim); background:linear-gradient(180deg, var(--accent-soft), var(--surface))}
+.person.pi .p-role{color:var(--accent)}
+
+.ack-box{
+  border-left:2px solid var(--accent-dim); background:var(--surface); border-radius:0 8px 8px 0;
+  padding:14px 18px; font-size:14px; color:var(--text-dim); margin:0 0 14px; overflow-wrap:anywhere;
+}
+.credits-note{font-size:12.5px; color:var(--text-faint)}
