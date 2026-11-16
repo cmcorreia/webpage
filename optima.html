@@ -1,0 +1,142 @@
+<meta charset="utf-8">
+<title>ccorreia &mdash; OPTIMA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="OPTIMA: Optical Precision Technology for Imaging and Mitigation of Aberrations. A COMPETE 2030 / FEDER co-promotion R&amp;D project (2026&ndash;2029) between Synopsis Planet, FEUP and Atlas Space and Defense, building an adaptive-optics testbed with hardware in the loop for novel wavefront sensors, multi-stage and AI-based control.">
+<meta property="og:title" content="OPTIMA &mdash; Optical Precision Technology for Imaging and Mitigation of Aberrations">
+<meta property="og:image" content="https://ccorreia.net/assets/img/optima/bench-schematic.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=20261119">
+<script src="assets/js/site.js?v=20261115" defer></script>
+
+<div id="site-nav" data-current="projects"></div>
+
+<div class="wrap project-page">
+
+  <div class="page-head optima-head">
+    <div>
+      <p class="back-link"><a href="projects.html#optima">&larr; All projects</a></p>
+      <p class="page-eyebrow">R&amp;D co-promotion project &middot; COMPETE 2030 &middot; Big Science</p>
+      <h1 class="page-title">OPTIMA</h1>
+      <p class="page-dek">Optical Precision Technology for Imaging and Mitigation of Aberrations &mdash; an adaptive-optics platform with hardware in the loop, to develop and validate novel wavefront sensors, multi-stage control and AI-based algorithms, for astronomy and free-space optical communications.</p>
+      <p class="optima-pt" lang="pt">Tecnologias &Oacute;ticas de Precis&atilde;o para Imagiologia e Mitiga&ccedil;&atilde;o de Aberra&ccedil;&otilde;es</p>
+    </div>
+    <div class="logo-tile optima-logo"><img src="assets/img/optima/optima-logo.png" alt="OPTIMA logo" width="642" height="267"></div>
+  </div>
+
+  <dl class="facts">
+    <div><dt>Coordinator</dt><dd>Synopsis Planet<small>Consortium leader</small></dd></div>
+    <div><dt>FEUP PI</dt><dd>Carlos M. Correia<small>FEUP, University of Porto</small></dd></div>
+    <div><dt>Period</dt><dd>Jul 2026 &ndash; Jun 2029<small>36 months</small></dd></div>
+        <div><dt>Funding</dt><dd>COMPETE 2030 &middot; FEDER<small>PITD &middot; SIID &ndash; I&amp;D Empresarial</small></dd></div>
+    <div><dt>Reference</dt><dd>COMPETE2030-FEDER-03031000<small>n.&ordm; 25412</small></dd></div>
+  </dl>
+
+  <section>
+    <div class="section-head"><span class="guide-star"></span><h2>From the lab bench to the next generation of AO</h2><span class="rule"></span></div>
+    <div class="prose">
+      <p>Numerical simulation is essential for designing adaptive-optics systems, but it can only go so far. Self-optimising and machine-learning controllers, new wavefront sensors and multi-stage architectures need to be trained, tested and validated on <strong>real hardware</strong> before they are trusted on a telescope or a communications link.</p>
+      <p>OPTIMA brings together an aerospace engineering company, a university and a space-and-defence consultancy to build that hardware: a reconfigurable optical bench that reproduces realistic disturbances &mdash; atmospheric turbulence, segmented-pupil and low-wind-effect aberrations &mdash; and closes the loop with interchangeable wavefront sensors and correctors.</p>
+      <p>The platform is used to study:</p>
+      <ul>
+        <li><strong>Novel wavefront sensing</strong>: programmable Fourier-based sensors with digital (SLM) and custom physical focal-plane masks, pyramid and Bi-O-edge families, compared head to head.</li>
+        <li><strong>Multi-stage control</strong>: coarse and fine stages with separate sensors and correctors, as in cascaded and woofer&ndash;tweeter architectures.</li>
+        <li><strong>AI-based wavefront control</strong>: auto-tuned, data-driven algorithms trained and validated with hardware in the loop.</li>
+        <li><strong>Applications</strong>: ELT-class astronomical instrumentation such as the Planetary Camera and Spectrograph (see <a href="ciao-pcs.html">Ciao PCS</a>), and key technologies for free-space optical communications, with relevance to space situational awareness, Earth observation and microscopy.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="guide-star"></span><h2>The OPTIMA optical bench</h2><span class="rule"></span></div>
+    <div class="prose">
+      <p>A two-stage adaptive-optics bench, built up phase by phase. The configuration below (Phase 4) adds a flip-mount switch so that a digital focal-plane mask on a spatial light modulator (Path A) can be tested head to head against a custom physical micro-optic (Path B).</p>
+    </div>
+    <div class="bench-specs">
+      <dl>
+        <div><dt>Source</dt><dd>Fibre-coupled laser at 635, 808 or 1550&nbsp;nm (one line active)</dd></div>
+        <div><dt>Disturbances</dt><dd>ELT segmented pupil mask, rotating phase wheel for turbulence, and an SLM injecting low-wind-effect and primary-mirror aberrations</dd></div>
+        <div><dt>Correction</dt><dd>Tip-tilt mirror and continuous-membrane deformable mirror</dd></div>
+      </dl>
+      <dl>
+        <div><dt>Stage 1 sensing</dt><dd>Shack&ndash;Hartmann sensor in the pupil plane (coarse)</dd></div>
+        <div><dt>Stage 2 sensing</dt><dd>Focal-plane sensor (pyramid / Bi-O-edge) with modulation mirror and a programmable SLM mask or a custom micro-optic (fine)</dd></div>
+        <div><dt>Scoring</dt><dd>Visible and near-infrared science cameras</dd></div>
+      </dl>
+    </div>
+    <figure class="schematic">
+      <a href="assets/img/optima/bench-schematic.png"><img src="assets/img/optima/bench-schematic.png" alt="Schematic of the OPTIMA optical bench in its Phase 4 configuration: laser source, ELT segmented pupil mask, phase wheel, SLM 1 for low-wind-effect aberrations, tip-tilt mirror, deformable mirror, Shack&ndash;Hartmann WFS 1, pyramid modulation mirror, SLM 2 digital focal-plane mask (Path A) or custom micro-optic (Path B) feeding focal-plane WFS 2, and visible and NIR scoring cameras." width="2510" height="1928" loading="lazy"></a>
+      <figcaption>Schematic of the Phase 4 configuration, not to scale (click to enlarge). A photograph will be added once all hardware is installed.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="guide-star"></span><h2>Consortium</h2><span class="rule"></span></div>
+    <div class="partners">
+      <div class="partner">
+        <div class="logo-tile"><img src="assets/img/optima/logo-synopsis-planet.png" alt="Synopsis Planet" width="600" height="310" loading="lazy"></div>
+        <p class="partner-role">Consortium leader</p>
+        <h3>Synopsis Planet</h3>
+        <p>Aerospace engineering company: space optics, optical and optomechanical design, thermal and mechanical simulation, and AI-aided systems.</p>
+      </div>
+      <div class="partner">
+        <div class="logo-tile"><img src="assets/img/optima/logo-feup.png" alt="University of Porto &ndash; Faculty of Engineering (FEUP)" width="700" height="270" loading="lazy"></div>
+        <p class="partner-role">Academic partner</p>
+        <h3>University of Porto &mdash; FEUP</h3>
+        <p>Faculty of Engineering. Physics, adaptive optics, instrumentation and simulation; leads the experimental optical platform and new AI-based wavefront-control algorithms.</p>
+      </div>
+      <div class="partner">
+        <div class="logo-tile"><img src="assets/img/optima/logo-atlas.png" alt="Atlas Space and Defense" width="360" height="134" loading="lazy"></div>
+        <p class="partner-role">Industry partner</p>
+        <h3>Atlas Space and Defense</h3>
+        <p>Technology consultancy and engineering services for the space and defence sectors.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="guide-star"></span><h2>Team</h2><span class="rule"></span></div>
+    <div class="people">
+      <div class="person pi"><p class="p-name">Carlos M. Correia</p><p class="p-role">FEUP PI</p></div>
+      <div class="person"><p class="p-name">F&aacute;bio Gaspar</p><p class="p-role">FEUP</p></div>
+      <div class="person"><p class="p-name">Paulo Gordo</p><p class="p-role">Synopsis Planet</p></div>
+      <div class="person"><p class="p-name">David Seixas</p><p class="p-role">Synopsis Planet</p></div>
+      <div class="person"><p class="p-name">Ana Sousa</p><p class="p-role">Synopsis Planet</p></div>
+      <div class="person"><p class="p-name">Joel Puga</p><p class="p-role">Atlas Space and Defense</p></div>
+      <div class="person"><p class="p-name">Nuno Rodrigues</p><p class="p-role">Atlas Space and Defense</p></div>
+    </div>
+    <p class="credits-note" style="margin-top:14px">PhD and MSc positions are opening on the project &mdash; see <a href="work-with-me.html#optima-phd">Work with me</a>.</p>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="guide-star"></span><h2>News</h2><span class="rule"></span></div>
+    <ul class="news-list">
+      <li><time datetime="2026-07-01">01 Jul 2026</time><span>OPTIMA starts: online kick-off meeting with Synopsis Planet, FEUP and Atlas Space and Defense.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="guide-star"></span><h2>Publications &amp; outputs</h2><span class="rule"></span></div>
+    <p class="proj-actions" style="margin:0 !important"><a class="proj-act proj-pubs" data-project="optima" href="publications.html?project=optima&amp;label=OPTIMA"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>OPTIMA publications</span></a></p>
+    <p class="credits-note" style="margin-top:10px">Papers, code and data from the project will be listed here as they appear.</p>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="guide-star"></span><h2>Contact</h2><span class="rule"></span></div>
+    <div class="prose">
+      <p><strong>Carlos M. Correia</strong>, FEUP PI &mdash; <a class="obf-mail" data-subject="OPTIMA project" href="#">carlos.correia [at] fe.up.pt</a><br>
+      Faculdade de Engenharia da Universidade do Porto, Rua Dr. Roberto Frias, 4200-465 Porto, Portugal</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="guide-star"></span><h2>Funding</h2><span class="rule"></span></div>
+    <div class="funding-logos">
+      <img src="assets/img/optima/funding-compete2030.png" alt="COMPETE 2030, Portugal 2030 and European Union co-funding logos" width="943" height="96" loading="lazy">
+      <img src="assets/img/optima/logo-ani.png" alt="ANI &ndash; Ag&ecirc;ncia Nacional de Inova&ccedil;&atilde;o" width="257" height="98" loading="lazy">
+    </div>
+    <p class="ack-box" lang="pt"><strong>OPTIMA &ndash; Tecnologias &Oacute;ticas de Precis&atilde;o para Imagiologia e Mitiga&ccedil;&atilde;o de Aberra&ccedil;&otilde;es</strong>, com a refer&ecirc;ncia COMPETE2030-FEDER-03031000, n.&ordm; 25412, financiado pelo PITD &ndash; COMPETE 2030, atrav&eacute;s do FEDER. Projeto em copromo&ccedil;&atilde;o no &acirc;mbito do SIID &ndash; I&amp;D Empresarial (Roteiros Tecnol&oacute;gicos Big Science), gerido pela ANI &ndash; Ag&ecirc;ncia Nacional de Inova&ccedil;&atilde;o.</p>
+  </section>
+
+</div>
+
+<div id="site-footer"></div>

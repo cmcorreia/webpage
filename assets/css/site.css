@@ -451,3 +451,39 @@ figure figcaption .cr a{color:var(--text-dim)}
   padding:14px 18px; font-size:14px; color:var(--text-dim); margin:0 0 14px; overflow-wrap:anywhere;
 }
 .credits-note{font-size:12.5px; color:var(--text-faint)}
+
+/* ---- OPTIMA project page (optima.html) ---- */
+.optima-head{display:flex; flex-wrap:wrap; align-items:center; gap:24px 40px}
+.optima-head > div:first-child{flex:999 1 480px; min-width:0}
+.optima-pt{font-style:italic; font-size:14px; color:var(--text-faint); margin:10px 0 0}
+.logo-tile{background:#fff; border-radius:10px; padding:14px 18px; display:flex; align-items:center; justify-content:center}
+.logo-tile img{display:block; max-width:100%; max-height:64px; width:auto; height:auto}
+.optima-head .logo-tile{flex:1 1 220px; max-width:300px; padding:18px 22px}
+.optima-head .logo-tile img{max-height:none; width:100%}
+.optima-head + .facts{border-radius:10px; margin-top:28px}
+
+.bench-specs{display:grid; grid-template-columns:1fr 1fr; gap:0 28px; margin:6px 0 0}
+.bench-specs dl{margin:0}
+.bench-specs div{padding:10px 0; border-top:1px solid var(--hairline)}
+.bench-specs dt{font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin:0 0 3px}
+.bench-specs dd{margin:0; font-size:14.5px; color:var(--text-dim)}
+figure.schematic{margin:22px 0 0}
+figure.schematic img{display:block; width:100%; height:auto; background:#fff; border-radius:10px; padding:10px; box-sizing:border-box}
+
+.partners{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px}
+.partner{background:var(--surface); border:1px solid var(--hairline); border-radius:10px; padding:16px}
+.partner .logo-tile{height:92px; box-sizing:border-box; margin:0 0 14px}
+.partner-role{font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin:0 0 4px}
+.partner h3{margin:0 0 6px; font-size:17px; color:var(--text)}
+.partner p:last-child{margin:0; font-size:14px; color:var(--text-dim)}
+
+.news-list{list-style:none; margin:0; padding:0}
+.news-list li{display:grid; grid-template-columns:110px 1fr; gap:14px; padding:10px 0; border-top:1px solid var(--hairline); font-size:15px; color:var(--text-dim)}
+.news-list time{font-family:"IBM Plex Mono", monospace; font-size:12px; color:var(--text-faint); padding-top:2px}
+
+.funding-logos{display:flex; flex-wrap:wrap; align-items:center; gap:12px; background:#fff; border-radius:10px; padding:14px 18px; margin:0 0 14px}
+.funding-logos img{display:block; height:auto; max-height:56px; width:auto; max-width:100%}
+@media (max-width:640px){
+  .bench-specs{grid-template-columns:1fr}
+  .news-list li{grid-template-columns:1fr; gap:2px}
+}
